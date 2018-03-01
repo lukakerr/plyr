@@ -9,10 +9,10 @@
 import Foundation
 import AVFoundation
 
-class Player: NSObject, AVAudioPlayerDelegate {
+class Player: NSObject, AVAudioPlayerDelegate, NSUserNotificationCenterDelegate {
   
   // Main audio player
-  var audioPlayer: AVAudioPlayer?
+  var audioPlayer: AVAudioPlayer!
   
   // Currently playing song
   var currentSong: URL!
@@ -26,6 +26,7 @@ class Player: NSObject, AVAudioPlayerDelegate {
   override init() {
     super.init()
     allSongs = getAllSongs()
+    NSUserNotificationCenter.default.delegate = self
   }
   
   func getAllSongs() -> [URL] {
@@ -35,27 +36,34 @@ class Player: NSObject, AVAudioPlayerDelegate {
   }
   
   func playAll() {
-    currentSong = allSongs[currentSongIndex]
-    if let song = currentSong {
-      playSong(path: song)
+    if allSongs.count > currentSongIndex {
+      currentSong = allSongs[currentSongIndex]
+      playSong(path: currentSong)
+    } else {
+      let notification = NSUserNotification()
+      notification.title = "No music found"
+      notification.informativeText = "No music could be found. Exiting"
+      notification.soundName = NSUserNotificationDefaultSoundName
+      NSUserNotificationCenter.default.deliver(notification)
+      exit(0)
     }
   }
   
   func pause() {
-    audioPlayer?.pause()
+    audioPlayer.pause()
   }
   
   func resume() {
-    audioPlayer?.prepareToPlay()
-    audioPlayer?.play()
+    audioPlayer.prepareToPlay()
+    audioPlayer.play()
   }
   
   func skip() {
-    audioPlayer?.currentTime += 10.0
+    audioPlayer.currentTime += 10.0
   }
   
   func rewind() {
-    audioPlayer?.currentTime -= 10.0
+    audioPlayer.currentTime -= 10.0
   }
   
   func next() {
@@ -71,11 +79,11 @@ class Player: NSObject, AVAudioPlayerDelegate {
   
   func playSong(path: URL) {
     audioPlayer = try? AVAudioPlayer(contentsOf: path)
-    audioPlayer?.numberOfLoops = 0
-    audioPlayer?.delegate = self
-    audioPlayer?.prepareToPlay()
+    audioPlayer.numberOfLoops = 0
+    audioPlayer.delegate = self
+    audioPlayer.prepareToPlay()
     
-    audioPlayer?.play()
+    audioPlayer.play()
     
     NotificationCenter.default.post(
       name: NSNotification.Name(rawValue: "setSongDetails"),
