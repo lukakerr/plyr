@@ -12,21 +12,24 @@ Audio files are looked for in the `~/Music` directory. If none are found, the ap
 - Minimal UI
 
 ### To Do
+
 - Add UI preferences
-	 - [ ] Window border radius
-	 - [ ] Show or hide traffic lights
-	 - [ ] Light or dark overlay
+  - [ ] Window border radius
+  - [ ] Show or hide traffic lights
+  - [ ] Light or dark overlay
+
 - Add functionality preferences
-	 - [ ] Duration to skip or rewind
+  - [ ] Duration to skip or rewind
+
 - Add functionality
-	 - [ ] Show popout view containing list of all user songs
-	 - [ ] Allow user to click on song to start playing
-	 - [ ] Add keybindings for play, pause, skip, rewind, next and previous buttons
+  - [ ] Show popout view containing list of all user songs
+  - [ ] Allow user to click on song to start playing
+  - [ ] Add keybindings for play, pause, skip, rewind, next and previous buttons
 
 ### Screenshots
 
 <p align="center">
-  <img src="https://i.imgur.com/Y5LjbZQ.png" width="275">
-  <img src="https://i.imgur.com/TzDtSx3.png" width="275">
-  <img src="https://i.imgur.com/gP5cyfM.png" width="275">
+  <img src="https://i.imgur.com/BK2Ez7a.png" width="250">
+  <img src="https://i.imgur.com/XACDb9A.png" width="250">
+  <img src="https://i.imgur.com/tyAlfa2.png" width="250">
 </p>

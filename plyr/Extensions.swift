@@ -13,7 +13,7 @@ extension FileManager {
     guard let enumerator = enumerator(at: URL(fileURLWithPath: directory), includingPropertiesForKeys: nil, options: [], errorHandler: nil) else {
       return []
     }
-    
+
     var musicFiles = [URL]()
     let enumeration: () -> Bool = {
       guard let fileURL = enumerator.nextObject() as? URL else {
@@ -31,11 +31,11 @@ extension FileManager {
 
 extension URL {
   private enum MusicFileExtension: String {
-    case mp3 = "mp3"
-    case m4a = "m4a"
-    case m4p = "m4p"
+    case mp3
+    case m4a
+    case m4p
   }
-  
+
   internal var isMusicFile: Bool {
     return MusicFileExtension(rawValue: pathExtension) != nil
   }

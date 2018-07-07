@@ -9,10 +9,10 @@
 import Cocoa
 
 class WindowController: NSWindowController {
-  
+
   override func windowDidLoad() {
     super.windowDidLoad()
-    
+
     if let window = window {
       window.titleVisibility = NSWindow.TitleVisibility.hidden
       window.styleMask.insert(.fullSizeContentView)
@@ -21,7 +21,7 @@ class WindowController: NSWindowController {
       window.isOpaque = false
       window.isMovableByWindowBackground = true
     }
-    
+
   }
 
 }

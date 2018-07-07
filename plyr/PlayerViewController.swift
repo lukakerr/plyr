@@ -74,9 +74,9 @@ class PlayerViewController: NSViewController {
   
   func setButtons() {
     if (player.audioPlayer?.isPlaying)! {
-      mainControlButton.image = NSImage(named: NSImage.Name(rawValue: "NSTouchBarPauseTemplate"))
+      mainControlButton.image = NSImage(named: "NSTouchBarPauseTemplate")
     } else {
-      mainControlButton.image = NSImage(named: NSImage.Name(rawValue: "NSTouchBarPlayTemplate"))
+      mainControlButton.image = NSImage(named: "NSTouchBarPlayTemplate")
     }
   }
   

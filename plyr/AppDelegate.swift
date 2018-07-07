@@ -10,13 +10,13 @@ import Cocoa
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
-  
+
   func applicationDidFinishLaunching(_ aNotification: Notification) {
   }
 
   func applicationWillTerminate(_ aNotification: Notification) {
   }
-  
+
   func userNotificationCenter(_ center: NSUserNotificationCenter, shouldPresent notification: NSUserNotification) -> Bool {
     return true
   }
