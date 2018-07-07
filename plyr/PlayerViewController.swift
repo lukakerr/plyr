@@ -14,7 +14,6 @@ class PlayerViewController: NSViewController {
   @IBOutlet weak var backgroundView: NSView!
   @IBOutlet weak var transparentView: NSVisualEffectView!
   @IBOutlet weak var mainControlButton: NSButton!
-  
   @IBOutlet weak var artistName: NSTextField!
   @IBOutlet weak var songName: NSTextField!
   
@@ -40,7 +39,7 @@ class PlayerViewController: NSViewController {
   override func viewDidLoad() {
     NotificationCenter.default.addObserver(
       self,
-      selector: #selector(self.setSongDetails(notification:)),
+      selector: #selector(self.setSongDetails),
       name: NSNotification.Name(rawValue: "setSongDetails"),
       object: nil
     )
@@ -48,44 +47,43 @@ class PlayerViewController: NSViewController {
   
   // Set song details from given audio path
   @objc func setSongDetails(notification: Notification?) {
-    if let assetPath = notification?.object as? URL {
-      let asset = AVURLAsset(url: assetPath, options: nil)
-      
-      for item in asset.commonMetadata {
-        if let key = item.commonKey {
-          if key.rawValue == "artwork" {
-            if let imageData = item.value as? NSData,
-              let image = NSImage(data: imageData as Data) {
-              self.view.layer?.contents = image
-            }
-          } else if key.rawValue == "artist" {
-            if let artist = item.value as? String {
-              artistName.stringValue = artist
-            }
-          } else if key.rawValue == "title" {
-            if let title = item.value as? String {
-              songName.stringValue = title
-            }
-          }
-        }
+    guard let assetPath = notification?.object as? URL else { return }
+    let asset = AVURLAsset(url: assetPath, options: nil)
+
+    for item in asset.commonMetadata {
+      guard let key = item.commonKey else { continue }
+
+      switch key {
+      case .commonKeyArtwork:
+        guard
+          let imageData = item.value as? Data,
+          let image = NSImage(data: imageData)
+          else { return }
+        self.view.layer?.contents = image
+      case .commonKeyArtist:
+        guard let artist = item.value as? String else { continue }
+        artistName.stringValue = artist
+      case .commonKeyTitle:
+        guard let title = item.value as? String else { continue }
+        songName.stringValue = title
+      default:
+        continue
       }
     }
   }
   
   func setButtons() {
-    if (player.audioPlayer?.isPlaying)! {
+    if player.audioPlayer.isPlaying {
       mainControlButton.image = NSImage(named: "NSTouchBarPauseTemplate")
     } else {
       mainControlButton.image = NSImage(named: "NSTouchBarPlayTemplate")
     }
   }
-  
+
+  // MARK: - Methods responding to button clicks
+
   @IBAction func onMainControlClick(_ sender: Any) {
-    if (player.audioPlayer?.isPlaying)! {
-      player.pause()
-    } else {
-      player.resume()
-    }
+    player.audioPlayer.isPlaying ? player.pause() : player.resume()
     self.setButtons()
   }
 
