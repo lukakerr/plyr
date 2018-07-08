@@ -73,7 +73,7 @@ class PlayerViewController: NSViewController {
   }
   
   func setButtons() {
-    if player.audioPlayer.isPlaying {
+    if player.playing {
       mainControlButton.image = NSImage(named: "NSTouchBarPauseTemplate")
     } else {
       mainControlButton.image = NSImage(named: "NSTouchBarPlayTemplate")
@@ -83,7 +83,7 @@ class PlayerViewController: NSViewController {
   // MARK: - Methods responding to button clicks
 
   @IBAction func onMainControlClick(_ sender: Any) {
-    player.audioPlayer.isPlaying ? player.pause() : player.resume()
+    player.playing ? player.pause() : player.resume()
     self.setButtons()
   }
 

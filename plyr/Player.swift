@@ -9,36 +9,36 @@
 import Foundation
 import AVFoundation
 
-class Player: NSObject, AVAudioPlayerDelegate, NSUserNotificationCenterDelegate {
+final class Player: NSObject, AVAudioPlayerDelegate, NSUserNotificationCenterDelegate {
   
   // Main audio player
-  var audioPlayer: AVAudioPlayer!
+  private var audioPlayer: AVAudioPlayer!
   
   // Currently playing song
-  var currentSong: URL!
+  private var currentSong: URL!
   
   // Currently playing song index
-  var currentSongIndex: Int = 0
+  private var currentSongIndex: Int = 0
   
   // All songs
-  var allSongs: [URL]!
+  private var allSongs: [URL]!
+
+  // Whether the player is currently playing or paused
+  public var playing: Bool {
+    return self.audioPlayer.isPlaying
+  }
   
   override init() {
     super.init()
     allSongs = getAllSongs()
     NSUserNotificationCenter.default.delegate = self
   }
-  
-  func getAllSongs() -> [URL] {
-    let path = "\(FileManager.default.homeDirectoryForCurrentUser.path)/Music"
-    let songs = FileManager.default.filteredMusicFileURLs(inDirectory: path)
-    return songs
-  }
-  
-  func playAll() {
+
+  // Plays all songs one by one
+  public func playAll() {
     if allSongs.count > currentSongIndex {
       currentSong = allSongs[currentSongIndex]
-      playSong(path: currentSong)
+      play(currentSong)
     } else {
       let notification = NSUserNotification()
       notification.title = "No music found"
@@ -48,41 +48,42 @@ class Player: NSObject, AVAudioPlayerDelegate, NSUserNotificationCenterDelegate 
       exit(0)
     }
   }
-  
-  func pause() {
+
+  // MARK: - Public methods to control the player
+
+  public func pause() {
     audioPlayer.pause()
   }
   
-  func resume() {
+  public func resume() {
     audioPlayer.prepareToPlay()
     audioPlayer.play()
   }
   
-  func skip() {
+  public func skip() {
     audioPlayer.currentTime += 10.0
   }
   
-  func rewind() {
+  public func rewind() {
     audioPlayer.currentTime -= 10.0
   }
   
-  func next() {
+  public func next() {
     currentSongIndex = (currentSongIndex + 1) % allSongs.count
     playAll()
   }
   
-  func previous() {
+  public func previous() {
     let newIndex = currentSongIndex - 1
     currentSongIndex = newIndex < 0 ? 0 : newIndex
     playAll()
   }
   
-  func playSong(path: URL) {
-    audioPlayer = try? AVAudioPlayer(contentsOf: path)
+  public func play(_ song: URL) {
+    audioPlayer = try? AVAudioPlayer(contentsOf: song)
     audioPlayer.numberOfLoops = 0
     audioPlayer.delegate = self
     audioPlayer.prepareToPlay()
-    
     audioPlayer.play()
     
     NotificationCenter.default.post(
@@ -90,9 +91,20 @@ class Player: NSObject, AVAudioPlayerDelegate, NSUserNotificationCenterDelegate 
       object: currentSong
     )
   }
-  
+
+  // MARK: - Private methods
+
+  // Returns an array of URLs found under ~/Music
+  private func getAllSongs() -> [URL] {
+    let path = "\(FileManager.default.homeDirectoryForCurrentUser.path)/Music"
+    let songs = FileManager.default.filteredMusicFileURLs(inDirectory: path)
+    return songs
+  }
+
+  // MARK: - AVAudioPlayerDelegate methods
+
+  // Called when a song playing the player ends
   func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-    currentSongIndex = (currentSongIndex + 1) % allSongs.count
-    playAll()
+    next()
   }
 }
