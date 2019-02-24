@@ -1,6 +1,6 @@
-# plyr
+# Plyr
 
-plyr is a hyperminimal, lightweight MacOS music playback desktop application.
+Plyr is a hyperminimal, lightweight macOS music playback desktop application.
 
 Audio files are looked for in the `~/Music` directory. If none are found, the app will notify you and terminate.
 
@@ -11,7 +11,7 @@ Audio files are looked for in the `~/Music` directory. If none are found, the ap
 - Skip to next or previous song
 - Minimal UI
 
-### To Do
+### Todo
 
 - Add UI preferences
   - [ ] Window border radius
@@ -24,7 +24,7 @@ Audio files are looked for in the `~/Music` directory. If none are found, the ap
 - Add functionality
   - [ ] Show popout view containing list of all user songs
   - [ ] Allow user to click on song to start playing
-  - [ ] Add keybindings for play, pause, skip, rewind, next and previous buttons
+  - [x] Add keybindings for play, pause, skip, rewind, next and previous buttons
 
 ### Screenshots
 
