@@ -10,6 +10,8 @@ import Foundation
 import AVFoundation
 
 final class Player: NSObject, AVAudioPlayerDelegate, NSUserNotificationCenterDelegate {
+
+  static let shared = Player()
   
   // Main audio player
   private var audioPlayer: AVAudioPlayer!
@@ -28,8 +30,9 @@ final class Player: NSObject, AVAudioPlayerDelegate, NSUserNotificationCenterDel
     return self.audioPlayer.isPlaying
   }
   
-  override init() {
+  private override init() {
     super.init()
+
     allSongs = getAllSongs()
     NSUserNotificationCenter.default.delegate = self
   }
@@ -107,4 +110,7 @@ final class Player: NSObject, AVAudioPlayerDelegate, NSUserNotificationCenterDel
   func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
     next()
   }
+
 }
+
+let player = Player.shared

@@ -16,10 +16,7 @@ class PlayerViewController: NSViewController {
   @IBOutlet weak var mainControlButton: NSButton!
   @IBOutlet weak var artistName: NSTextField!
   @IBOutlet weak var songName: NSTextField!
-  
-  // Player class
-  let player = Player()
-  
+
   override func viewWillAppear() {
     super.viewWillAppear()
   
@@ -32,6 +29,14 @@ class PlayerViewController: NSViewController {
     transparentView.layer?.cornerRadius = 7.0
     transparentView.state = .active
     transparentView.material = .light
+
+    NSEvent.addLocalMonitorForEvents(matching: .keyDown) { (event) -> NSEvent? in
+      if self.keyDown(with: event) {
+        return nil
+      }
+
+      return event
+    }
     
     player.playAll()
   }
@@ -43,6 +48,33 @@ class PlayerViewController: NSViewController {
       name: NSNotification.Name(rawValue: "setSongDetails"),
       object: nil
     )
+  }
+
+  func keyDown(with event: NSEvent) -> Bool {
+    switch event.keyCode {
+    case 49: // Spacebar
+      self.onMainControlClick(nil)
+      return true
+
+    case 45: // 'n'
+      self.nextButtonClicked(nil)
+      return true
+
+    case 35: // 'p'
+      self.previousButtonClicked(nil)
+      return true
+
+    case 1: // 's'
+      self.skipButtonClicked(nil)
+      return true
+
+    case 15: // 'r'
+      self.rewindButtonClicked(nil)
+      return true
+
+    default:
+      return false
+    }
   }
   
   // Set song details from given audio path
@@ -82,27 +114,27 @@ class PlayerViewController: NSViewController {
 
   // MARK: - Methods responding to button clicks
 
-  @IBAction func onMainControlClick(_ sender: Any) {
+  @IBAction func onMainControlClick(_ sender: Any?) {
     player.playing ? player.pause() : player.resume()
     self.setButtons()
   }
 
-  @IBAction func skipButtonClicked(_ sender: Any) {
+  @IBAction func skipButtonClicked(_ sender: Any?) {
     player.skip()
     self.setButtons()
   }
   
-  @IBAction func rewindButtonClicked(_ sender: Any) {
+  @IBAction func rewindButtonClicked(_ sender: Any?) {
     player.rewind()
     self.setButtons()
   }
   
-  @IBAction func nextButtonClicked(_ sender: Any) {
+  @IBAction func nextButtonClicked(_ sender: Any?) {
     player.next()
     self.setButtons()
   }
   
-  @IBAction func previousButtonClicked(_ sender: Any) {
+  @IBAction func previousButtonClicked(_ sender: Any?) {
     player.previous()
     self.setButtons()
   }
