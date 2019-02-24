@@ -1,6 +1,6 @@
 //
 //  Player.swift
-//  plyr
+//  Plyr
 //
 //  Created by Luka Kerr on 1/3/18.
 //  Copyright © 2018 Luka Kerr. All rights reserved.
@@ -77,7 +77,7 @@ final class Player: NSObject, AVAudioPlayerDelegate, NSUserNotificationCenterDel
 
     currentSongIndex = newIndex
     preferences.currentSongIndex = newIndex
-    
+
     playAll()
   }
   

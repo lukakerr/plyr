@@ -1,6 +1,6 @@
 //
 //  PlayerViewController.swift
-//  plyr
+//  Plyr
 //
 //  Created by Luka Kerr on 28/2/18.
 //  Copyright © 2018 Luka Kerr. All rights reserved.

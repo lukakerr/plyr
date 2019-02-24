@@ -1,6 +1,6 @@
 //
 //  Extensions.swift
-//  plyr
+//  Plyr
 //
 //  Created by Luka Kerr on 1/3/18.
 //  Copyright © 2018 Luka Kerr. All rights reserved.

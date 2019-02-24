@@ -1,6 +1,6 @@
 //
 //  Preferences.swift
-//  plyr
+//  Plyr
 //
 //  Created by Luka Kerr on 24/2/19.
 //  Copyright © 2019 Luka Kerr. All rights reserved.
