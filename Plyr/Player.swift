@@ -12,37 +12,37 @@ import AVFoundation
 final class Player: NSObject, AVAudioPlayerDelegate, NSUserNotificationCenterDelegate {
 
   static let shared = Player()
-  
+
+  /// All songs
+  public var songs: [Song]!
+
   /// Main audio player
   private var audioPlayer: AVAudioPlayer!
-  
+
   /// Currently playing song
-  private var currentSong: URL!
-  
+  private var currentSong: Song!
+
   /// Currently playing song index
   private var currentSongIndex: Int!
-  
-  /// All songs
-  private var allSongs: [URL]!
 
   /// Whether the player is currently playing or paused
   public var playing: Bool {
-    return self.audioPlayer.isPlaying
+    return audioPlayer.isPlaying
   }
-  
+
   private override init() {
     super.init()
 
-    allSongs = getAllSongs()
+    songs = getAllSongs()
     currentSongIndex = preferences.currentSongIndex
     NSUserNotificationCenter.default.delegate = self
   }
 
   /// Plays all songs one by one
   public func playAll() {
-    if allSongs.count > currentSongIndex {
-      currentSong = allSongs[currentSongIndex]
-      play(currentSong)
+    if songs.count > currentSongIndex {
+      currentSong = songs[currentSongIndex]
+      play(currentSong.url)
     } else {
       let notification = NSUserNotification()
       notification.title = "No music found"
@@ -58,29 +58,29 @@ final class Player: NSObject, AVAudioPlayerDelegate, NSUserNotificationCenterDel
   public func pause() {
     audioPlayer.pause()
   }
-  
+
   public func resume() {
     audioPlayer.prepareToPlay()
     audioPlayer.play()
   }
-  
+
   public func skip() {
     audioPlayer.currentTime += 10.0
   }
-  
+
   public func rewind() {
     audioPlayer.currentTime -= 10.0
   }
-  
+
   public func next() {
-    let newIndex = (currentSongIndex + 1) % allSongs.count
+    let newIndex = (currentSongIndex + 1) % songs.count
 
     currentSongIndex = newIndex
     preferences.currentSongIndex = newIndex
 
     playAll()
   }
-  
+
   public func previous() {
     let newIndex = currentSongIndex <= 0 ? 0 : currentSongIndex - 1
 
@@ -89,24 +89,38 @@ final class Player: NSObject, AVAudioPlayerDelegate, NSUserNotificationCenterDel
 
     playAll()
   }
-  
+
+  public func play(_ song: Song) {
+    if let index = songs.index(where: { $0.url == song.url }) {
+      currentSongIndex = index
+      preferences.currentSongIndex = index
+      playAll()
+    }
+  }
+
   public func play(_ song: URL) {
     audioPlayer = try? AVAudioPlayer(contentsOf: song)
     audioPlayer.numberOfLoops = 0
     audioPlayer.delegate = self
     audioPlayer.prepareToPlay()
     audioPlayer.play()
-    
-    NotificationCenter.default.post(
-      name: NSNotification.Name(rawValue: "setSongDetails"),
-      object: currentSong
-    )
+
+    DispatchQueue.global(qos: .userInitiated).async {
+      self.currentSong.setMetadata()
+
+      DispatchQueue.main.async {
+        NotificationCenter.default.post(
+          name: NSNotification.Name(rawValue: "setSongDetails"),
+          object: self.currentSong
+        )
+      }
+    }
   }
 
   // MARK: - Private methods
 
   // Returns an array of URLs found under ~/Music
-  private func getAllSongs() -> [URL] {
+  private func getAllSongs() -> [Song] {
     let path = "\(FileManager.default.homeDirectoryForCurrentUser.path)/Music"
     let songs = FileManager.default.filteredMusicFileURLs(inDirectory: path)
     return songs

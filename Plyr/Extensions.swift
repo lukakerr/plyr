@@ -9,23 +9,33 @@
 import Foundation
 
 extension FileManager {
-  internal func filteredMusicFileURLs(inDirectory directory: String) -> [URL] {
-    guard let enumerator = enumerator(at: URL(fileURLWithPath: directory), includingPropertiesForKeys: nil, options: [], errorHandler: nil) else {
+  internal func filteredMusicFileURLs(inDirectory directory: String) -> [Song] {
+    guard let enumerator = enumerator(
+      at: URL(fileURLWithPath: directory),
+      includingPropertiesForKeys: nil,
+      options: [],
+      errorHandler: nil
+    ) else {
       return []
     }
 
-    var musicFiles = [URL]()
+    var songs = [Song]()
+
     let enumeration: () -> Bool = {
       guard let fileURL = enumerator.nextObject() as? URL else {
         return false
       }
+
       if fileURL.isMusicFile {
-        musicFiles.append(fileURL)
+        let song = Song(url: fileURL)
+        songs.append(song)
       }
+
       return true
     }
     while enumeration() {}
-    return musicFiles
+
+    return songs
   }
 }
 

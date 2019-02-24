@@ -8,16 +8,19 @@
 
 import Cocoa
 
-class WindowController: NSWindowController {
+let PLYR_AUTOSAVE_NAME = "PlyrWindow"
+
+class PlyrWindowController: NSWindowController {
 
   override func windowDidLoad() {
     super.windowDidLoad()
 
-    window?.titleVisibility = .hidden
+    window?.isOpaque = false
     window?.styleMask = .borderless
     window?.backgroundColor = .clear
-    window?.isOpaque = false
+    window?.titleVisibility = .hidden
     window?.isMovableByWindowBackground = true
+    window?.setFrameAutosaveName(PLYR_AUTOSAVE_NAME)
   }
 
 }

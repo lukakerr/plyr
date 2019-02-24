@@ -22,14 +22,13 @@ Audio files are looked for in the `~/Music` directory. If none are found, the ap
   - [ ] Duration to skip or rewind
 
 - Add functionality
-  - [ ] Show popout view containing list of all user songs
-  - [ ] Allow user to click on song to start playing
+  - [x] Show quick open panel to search for and play songs
   - [x] Add keybindings for play, pause, skip, rewind, next and previous buttons
 
 ### Screenshots
 
 <p align="center">
   <img src="https://i.imgur.com/BK2Ez7a.png" width="250">
+  <img src="https://i.imgur.com/zUWg3sR.png" width="250">
   <img src="https://i.imgur.com/XACDb9A.png" width="250">
-  <img src="https://i.imgur.com/tyAlfa2.png" width="250">
 </p>
