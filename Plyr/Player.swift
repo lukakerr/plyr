@@ -13,19 +13,19 @@ final class Player: NSObject, AVAudioPlayerDelegate, NSUserNotificationCenterDel
 
   static let shared = Player()
   
-  // Main audio player
+  /// Main audio player
   private var audioPlayer: AVAudioPlayer!
   
-  // Currently playing song
+  /// Currently playing song
   private var currentSong: URL!
   
-  // Currently playing song index
+  /// Currently playing song index
   private var currentSongIndex: Int = 0
   
-  // All songs
+  /// All songs
   private var allSongs: [URL]!
 
-  // Whether the player is currently playing or paused
+  /// Whether the player is currently playing or paused
   public var playing: Bool {
     return self.audioPlayer.isPlaying
   }
@@ -37,7 +37,7 @@ final class Player: NSObject, AVAudioPlayerDelegate, NSUserNotificationCenterDel
     NSUserNotificationCenter.default.delegate = self
   }
 
-  // Plays all songs one by one
+  /// Plays all songs one by one
   public func playAll() {
     if allSongs.count > currentSongIndex {
       currentSong = allSongs[currentSongIndex]

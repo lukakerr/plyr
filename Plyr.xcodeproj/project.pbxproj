@@ -42,7 +42,7 @@
 		A19C34701F76182E00BA7FC3 = {
 			isa = PBXGroup;
 			children = (
-				A19C347B1F76182E00BA7FC3 /* plyr */,
+				A19C347B1F76182E00BA7FC3 /* Plyr */,
 				A19C347A1F76182E00BA7FC3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -55,7 +55,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A19C347B1F76182E00BA7FC3 /* plyr */ = {
+		A19C347B1F76182E00BA7FC3 /* Plyr */ = {
 			isa = PBXGroup;
 			children = (
 				A19C347C1F76182E00BA7FC3 /* AppDelegate.swift */,
@@ -67,7 +67,7 @@
 				A1D6A1BC2046AD9F0071155C /* PlayerViewController.swift */,
 				A1B7872F1F77AA2700F6C5DF /* WindowController.swift */,
 			);
-			path = plyr;
+			path = Plyr;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -107,7 +107,7 @@
 					};
 				};
 			};
-			buildConfigurationList = A19C34741F76182E00BA7FC3 /* Build configuration list for PBXProject "plyr" */;
+			buildConfigurationList = A19C34741F76182E00BA7FC3 /* Build configuration list for PBXProject "Plyr" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -286,10 +286,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/plyr",
 				);
-				INFOPLIST_FILE = plyr/Info.plist;
+				INFOPLIST_FILE = Plyr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12.2;
-				PRODUCT_BUNDLE_IDENTIFIER = com.lukakerr.plyr;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lukakerr.Plyr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_PRECOMPILE_BRIDGING_HEADER = YES;
@@ -309,10 +309,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/plyr",
 				);
-				INFOPLIST_FILE = plyr/Info.plist;
+				INFOPLIST_FILE = Plyr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12.2;
-				PRODUCT_BUNDLE_IDENTIFIER = com.lukakerr.plyr;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lukakerr.Plyr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_PRECOMPILE_BRIDGING_HEADER = YES;
@@ -323,7 +323,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A19C34741F76182E00BA7FC3 /* Build configuration list for PBXProject "plyr" */ = {
+		A19C34741F76182E00BA7FC3 /* Build configuration list for PBXProject "Plyr" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A19C34871F76182E00BA7FC3 /* Debug */,
