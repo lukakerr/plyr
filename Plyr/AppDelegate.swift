@@ -8,6 +8,8 @@
 
 import Cocoa
 
+let defaults = UserDefaults.standard
+
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
 

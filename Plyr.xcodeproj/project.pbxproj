@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A142AA892222183A0018C7BC /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142AA882222183A0018C7BC /* Preferences.swift */; };
 		A19C347D1F76182E00BA7FC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C347C1F76182E00BA7FC3 /* AppDelegate.swift */; };
 		A19C34841F76182E00BA7FC3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A19C34821F76182E00BA7FC3 /* Main.storyboard */; };
 		A1A133AD1F830FBD0072CB58 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1A133AC1F830FBD0072CB58 /* Assets.xcassets */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A142AA882222183A0018C7BC /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		A19C34791F76182E00BA7FC3 /* plyr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = plyr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A19C347C1F76182E00BA7FC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A19C34831F76182E00BA7FC3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 				A19C34821F76182E00BA7FC3 /* Main.storyboard */,
 				A1C24558204779D300B519F8 /* Player.swift */,
 				A1D6A1BC2046AD9F0071155C /* PlayerViewController.swift */,
+				A142AA882222183A0018C7BC /* Preferences.swift */,
 				A1B7872F1F77AA2700F6C5DF /* WindowController.swift */,
 			);
 			path = Plyr;
@@ -144,6 +147,7 @@
 			files = (
 				A1FFBBC12047A4FB004C16BA /* Extensions.swift in Sources */,
 				A1C24559204779D300B519F8 /* Player.swift in Sources */,
+				A142AA892222183A0018C7BC /* Preferences.swift in Sources */,
 				A1D6A1BD2046AD9F0071155C /* PlayerViewController.swift in Sources */,
 				A1B787301F77AA2700F6C5DF /* WindowController.swift in Sources */,
 				A19C347D1F76182E00BA7FC3 /* AppDelegate.swift in Sources */,

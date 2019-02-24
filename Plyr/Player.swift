@@ -20,7 +20,7 @@ final class Player: NSObject, AVAudioPlayerDelegate, NSUserNotificationCenterDel
   private var currentSong: URL!
   
   /// Currently playing song index
-  private var currentSongIndex: Int = 0
+  private var currentSongIndex: Int!
   
   /// All songs
   private var allSongs: [URL]!
@@ -34,6 +34,7 @@ final class Player: NSObject, AVAudioPlayerDelegate, NSUserNotificationCenterDel
     super.init()
 
     allSongs = getAllSongs()
+    currentSongIndex = preferences.currentSongIndex
     NSUserNotificationCenter.default.delegate = self
   }
 
@@ -72,13 +73,20 @@ final class Player: NSObject, AVAudioPlayerDelegate, NSUserNotificationCenterDel
   }
   
   public func next() {
-    currentSongIndex = (currentSongIndex + 1) % allSongs.count
+    let newIndex = (currentSongIndex + 1) % allSongs.count
+
+    currentSongIndex = newIndex
+    preferences.currentSongIndex = newIndex
+    
     playAll()
   }
   
   public func previous() {
-    let newIndex = currentSongIndex - 1
-    currentSongIndex = newIndex < 0 ? 0 : newIndex
+    let newIndex = currentSongIndex <= 0 ? 0 : currentSongIndex - 1
+
+    currentSongIndex = newIndex
+    preferences.currentSongIndex = newIndex
+
     playAll()
   }
   
