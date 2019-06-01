@@ -91,7 +91,7 @@ final class Player: NSObject, AVAudioPlayerDelegate, NSUserNotificationCenterDel
   }
 
   public func play(_ song: Song) {
-    if let index = songs.index(where: { $0.url == song.url }) {
+    if let index = songs.firstIndex(where: { $0.url == song.url }) {
       currentSongIndex = index
       preferences.currentSongIndex = index
       playAll()
