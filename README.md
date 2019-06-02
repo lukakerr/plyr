@@ -13,6 +13,33 @@ Plyr is a hyperminimal, lightweight macOS music playback desktop application.
 
 Audio files are looked for in the `~/Music` directory. If none are found, the app will notify you and terminate.
 
+### Installing
+
+#### Install via Homebrew Cask
+
+```bash
+$ brew tap lukakerr/things
+$ brew cask install plyr
+```
+
+#### Manual Download
+
+Visit the [releases page](https://github.com/lukakerr/plyr/releases) to download manually.
+
+### Uninstalling
+
+#### Download via Homebrew Cask
+
+```bash
+$ brew cask remove pine
+```
+
+#### Downloaded Manually
+
+```bash
+$ rm -r /Applications/Plyr.app ~/Library/Caches/io.github.lukakerr.plyr
+```
+
 ### Features
 
 - Pause or play
