@@ -164,7 +164,12 @@ extension PlayerViewController: OpenQuicklyDelegate {
 
   func openQuickly(item: Any) -> NSView? {
     guard
-      let song = item as? Song,
+      let song = item as? Song
+    else { return nil }
+
+    song.setMetadata()
+
+    guard
       let artist = song.artist,
       let name = song.name
     else { return nil }

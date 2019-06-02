@@ -14,6 +14,10 @@ open class OpenQuicklyWindowController: NSWindowController {
 
   var options: OpenQuicklyOptions!
 
+  private var windowIsVisible: Bool {
+    return window?.isVisible ?? false
+  }
+
   public convenience init(options: OpenQuicklyOptions) {
     let oqvc = OpenQuicklyViewController(options: options)
     let window = OpenQuicklyWindow(contentViewController: oqvc)
@@ -28,8 +32,10 @@ open class OpenQuicklyWindowController: NSWindowController {
   }
 
   override open func close() {
-    options.delegate?.windowDidClose()
-    super.close()
+    if windowIsVisible {
+      options.delegate?.windowDidClose()
+      super.close()
+    }
   }
 
   public func toggle() {

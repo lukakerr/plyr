@@ -21,16 +21,9 @@ class Song {
     self.url = url
     self.name = nil
     self.artist = nil
-    self.artwork = nil
+    self.artwork = NSImage(named: "Missing")
 
-    DispatchQueue.global(qos: .userInitiated).async {
-      self.setMetadata()
-    }
-
-    if self.artwork == nil {
-      self.artwork = NSImage(named: "Missing")
-      self.setArtworkSize()
-    }
+    self.setArtworkSize()
   }
 
   private func setArtworkSize() {

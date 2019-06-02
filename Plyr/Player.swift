@@ -119,8 +119,16 @@ final class Player: NSObject, AVAudioPlayerDelegate, NSUserNotificationCenterDel
   }
 
   public func song(for term: String) -> [Song] {
+    if term.count < 2 {
+      return []
+    }
+
     return songs.filter {
-      $0.name?.lowercased().contains(term.lowercased()) ?? false
+      if let path = $0.url.lastPathComponent.removingPercentEncoding {
+        return path.lowercased().contains(term.lowercased())
+      }
+
+      return false
     }
   }
 

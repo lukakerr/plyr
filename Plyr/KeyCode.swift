@@ -9,7 +9,6 @@
 import Foundation
 
 enum KeyCode {
-
   static let n: UInt16 = 45
   static let p: UInt16 = 35
   static let s: UInt16 = 1
