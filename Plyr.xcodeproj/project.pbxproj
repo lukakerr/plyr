@@ -16,6 +16,7 @@
 		A12C35D022A3496F00DE7886 /* KeyCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12C35CF22A3496F00DE7886 /* KeyCode.swift */; };
 		A131454122224FC500E86383 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = A131454022224FC500E86383 /* Song.swift */; };
 		A142AA892222183A0018C7BC /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142AA882222183A0018C7BC /* Preferences.swift */; };
+		A174016622A3737000ED4D3F /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A174016522A3737000ED4D3F /* Storage.swift */; };
 		A19C347D1F76182E00BA7FC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C347C1F76182E00BA7FC3 /* AppDelegate.swift */; };
 		A19C34841F76182E00BA7FC3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A19C34821F76182E00BA7FC3 /* Main.storyboard */; };
 		A1A133AD1F830FBD0072CB58 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1A133AC1F830FBD0072CB58 /* Assets.xcassets */; };
@@ -35,6 +36,7 @@
 		A12C35CF22A3496F00DE7886 /* KeyCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyCode.swift; sourceTree = "<group>"; };
 		A131454022224FC500E86383 /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		A142AA882222183A0018C7BC /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
+		A174016522A3737000ED4D3F /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		A19C34791F76182E00BA7FC3 /* Plyr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Plyr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A19C347C1F76182E00BA7FC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A19C34831F76182E00BA7FC3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 				A1B7872F1F77AA2700F6C5DF /* PlyrWindowController.swift */,
 				A142AA882222183A0018C7BC /* Preferences.swift */,
 				A131454022224FC500E86383 /* Song.swift */,
+				A174016522A3737000ED4D3F /* Storage.swift */,
 			);
 			path = Plyr;
 			sourceTree = "<group>";
@@ -183,6 +186,7 @@
 				A12C35CB22A3441500DE7886 /* OpenQuicklyOptions.swift in Sources */,
 				A19C347D1F76182E00BA7FC3 /* AppDelegate.swift in Sources */,
 				A12C35CA22A3441500DE7886 /* OpenQuicklyTableRowView.swift in Sources */,
+				A174016622A3737000ED4D3F /* Storage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

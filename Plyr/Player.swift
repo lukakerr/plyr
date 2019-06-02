@@ -36,7 +36,14 @@ final class Player: NSObject, AVAudioPlayerDelegate, NSUserNotificationCenterDel
   }
 
   public func initialize() {
+    if let cachedSongs = Storage.retrieve("songs.json", from: .caches, as: [Song].self) {
+      self.songs = cachedSongs
+      return
+    }
+
     self.songs = self.getAllSongs()
+
+    Storage.store(self.songs, to: .caches, as: "songs.json")
   }
 
   /// Plays all songs one by one

@@ -10,12 +10,12 @@ import Foundation
 import Cocoa
 import AVFoundation
 
-class Song {
+class Song: Codable {
 
   public var url: URL
   public var name: String?
   public var artist: String?
-  public var artwork: NSImage?
+  public var artwork: Data?
 
   init(url: URL) {
     self.url = url
@@ -28,13 +28,8 @@ class Song {
     }
 
     if self.artwork == nil {
-      self.artwork = NSImage(named: "Missing")
-      self.setArtworkSize()
+      self.artwork = NSImage(named: "Missing")?.tiffRepresentation
     }
-  }
-
-  private func setArtworkSize() {
-    artwork?.size = NSSize(width: 36, height: 36)
   }
 
   public func setMetadata() {
@@ -57,9 +52,7 @@ class Song {
 
         case .commonKeyArtwork:
           guard let imageData = item.value as? Data else { continue }
-
-          artwork = NSImage(data: imageData)
-          setArtworkSize()
+          artwork = imageData
 
         default:
           continue

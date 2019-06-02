@@ -118,7 +118,7 @@ class PlayerViewController: NSViewController {
       let name = song.name
     else { return }
 
-    view.layer?.contents = artwork
+    view.layer?.contents = NSImage(data: artwork)
     artistName.stringValue = artist
     songName.stringValue = name
   }
@@ -200,8 +200,9 @@ extension PlayerViewController: OpenQuicklyDelegate {
     text.addArrangedSubview(title)
     text.addArrangedSubview(subtitle)
 
-    if let artwork = song.artwork {
-      view.addArrangedSubview(NSImageView(image: artwork))
+    if let artwork = song.artwork, let image = NSImage(data: artwork) {
+      image.size = NSSize(width: 36, height: 36)
+      view.addArrangedSubview(NSImageView(image: image))
     }
 
     view.addArrangedSubview(text)
