@@ -10,6 +10,14 @@ import Foundation
 import Cocoa
 import AVFoundation
 
+func ==(lhs: Song, rhs: Song) -> Bool {
+  return lhs.url == rhs.url
+}
+
+func !=(lhs: Song, rhs: Song) -> Bool {
+  return !(lhs == rhs)
+}
+
 class Song {
 
   public var url: URL
@@ -30,8 +38,12 @@ class Song {
     artwork?.size = NSSize(width: 36, height: 36)
   }
 
+  public func clearArtwork() {
+    self.artwork = nil
+  }
+
   public func setMetadata() {
-    let asset = AVURLAsset(url: url, options: nil)
+    let asset = AVURLAsset(url: url)
 
     for format in asset.availableMetadataFormats {
       if name != nil && artist != nil && artwork != nil {

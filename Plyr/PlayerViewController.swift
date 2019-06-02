@@ -228,6 +228,7 @@ extension PlayerViewController: OpenQuicklyDelegate {
 
   func windowDidClose() {
     searching = false
+    player.clearSongArtwork()
   }
 
 }

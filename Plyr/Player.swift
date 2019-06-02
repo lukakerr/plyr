@@ -118,6 +118,14 @@ final class Player: NSObject, AVAudioPlayerDelegate, NSUserNotificationCenterDel
     }
   }
 
+  public func clearSongArtwork() {
+    self.songs.forEach {
+      if $0 != currentSong {
+        $0.clearArtwork()
+      }
+    }
+  }
+
   public func song(for term: String) -> [Song] {
     if term.count < 2 {
       return []
