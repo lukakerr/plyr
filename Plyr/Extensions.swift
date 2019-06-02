@@ -6,6 +6,7 @@
 //  Copyright © 2018 Luka Kerr. All rights reserved.
 //
 
+import Cocoa
 import Foundation
 
 extension FileManager {
@@ -50,4 +51,12 @@ extension URL {
   internal var isMusicFile: Bool {
     return MusicFileExtension(rawValue: pathExtension) != nil
   }
+}
+
+extension NSImage {
+
+  public func setSize() {
+    self.size = NSSize(width: 36, height: 36)
+  }
+
 }

@@ -18,6 +18,8 @@ func !=(lhs: Song, rhs: Song) -> Bool {
   return !(lhs == rhs)
 }
 
+let MISSING_ARTWORK = NSImage(named: "Missing")
+
 class Song {
 
   public var url: URL
@@ -29,13 +31,9 @@ class Song {
     self.url = url
     self.name = nil
     self.artist = nil
-    self.artwork = NSImage(named: "Missing")
+    self.artwork = nil
 
-    self.setArtworkSize()
-  }
-
-  private func setArtworkSize() {
-    artwork?.size = NSSize(width: 36, height: 36)
+    self.artwork?.setSize()
   }
 
   public func clearArtwork() {
@@ -64,7 +62,7 @@ class Song {
           guard let imageData = item.value as? Data else { continue }
 
           artwork = NSImage(data: imageData)
-          setArtworkSize()
+          artwork?.setSize()
 
         default:
           continue

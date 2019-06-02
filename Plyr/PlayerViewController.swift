@@ -113,12 +113,15 @@ class PlayerViewController: NSViewController {
   @objc func setSongDetails(notification: Notification?) {
     guard
       let song = notification?.object as? Song,
-      let artwork = song.artwork,
       let artist = song.artist,
       let name = song.name
     else { return }
 
-    view.layer?.contents = artwork
+    if let artwork = song.artwork ?? MISSING_ARTWORK {
+      artwork.setSize()
+      view.layer?.contents = artwork
+    }
+
     artistName.stringValue = artist
     songName.stringValue = name
   }
@@ -205,7 +208,8 @@ extension PlayerViewController: OpenQuicklyDelegate {
     text.addArrangedSubview(title)
     text.addArrangedSubview(subtitle)
 
-    if let artwork = song.artwork {
+    if let artwork = song.artwork ?? MISSING_ARTWORK {
+      artwork.setSize()
       view.addArrangedSubview(NSImageView(image: artwork))
     }
 
