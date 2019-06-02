@@ -1,9 +1,9 @@
 # Plyr
 
-
 [![Swift 5](https://img.shields.io/badge/swift-5-orange.svg?style=flat)](https://github.com/apple/swift)
 [![Platform](http://img.shields.io/badge/platform-macOS-red.svg?style=flat)](https://developer.apple.com/macos/)
 [![Github](http://img.shields.io/badge/github-lukakerr-green.svg?style=flat)](https://github.com/lukakerr)
+![Github All Releases](https://img.shields.io/github/downloads/lukakerr/plyr/total.svg)
 
 <p align="center">
   <img src="./Plyr/Assets.xcassets/AppIcon.appiconset/mac_appicon-512@1x.png" width="150">

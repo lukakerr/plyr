@@ -35,7 +35,7 @@
 		A12C35CF22A3496F00DE7886 /* KeyCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyCode.swift; sourceTree = "<group>"; };
 		A131454022224FC500E86383 /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		A142AA882222183A0018C7BC /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
-		A19C34791F76182E00BA7FC3 /* plyr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = plyr.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A19C34791F76182E00BA7FC3 /* Plyr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Plyr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A19C347C1F76182E00BA7FC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A19C34831F76182E00BA7FC3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A19C34851F76182E00BA7FC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -68,7 +68,7 @@
 		A19C347A1F76182E00BA7FC3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A19C34791F76182E00BA7FC3 /* plyr.app */,
+				A19C34791F76182E00BA7FC3 /* Plyr.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -100,9 +100,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A19C34781F76182E00BA7FC3 /* plyr */ = {
+		A19C34781F76182E00BA7FC3 /* Plyr */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A19C34891F76182E00BA7FC3 /* Build configuration list for PBXNativeTarget "plyr" */;
+			buildConfigurationList = A19C34891F76182E00BA7FC3 /* Build configuration list for PBXNativeTarget "Plyr" */;
 			buildPhases = (
 				A19C34751F76182E00BA7FC3 /* Sources */,
 				A19C34761F76182E00BA7FC3 /* Frameworks */,
@@ -112,9 +112,9 @@
 			);
 			dependencies = (
 			);
-			name = plyr;
+			name = Plyr;
 			productName = Minimal;
-			productReference = A19C34791F76182E00BA7FC3 /* plyr.app */;
+			productReference = A19C34791F76182E00BA7FC3 /* Plyr.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -147,7 +147,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A19C34781F76182E00BA7FC3 /* plyr */,
+				A19C34781F76182E00BA7FC3 /* Plyr */,
 			);
 		};
 /* End PBXProject section */
@@ -368,7 +368,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A19C34891F76182E00BA7FC3 /* Build configuration list for PBXNativeTarget "plyr" */ = {
+		A19C34891F76182E00BA7FC3 /* Build configuration list for PBXNativeTarget "Plyr" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A19C348A1F76182E00BA7FC3 /* Debug */,
