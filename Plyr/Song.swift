@@ -17,15 +17,15 @@ class Song {
   public var artist: String?
   public var artwork: NSImage?
 
-  init(url: URL, name: String?, artist: String?, artwork: NSImage?) {
+  init(url: URL) {
     self.url = url
-    self.name = name
-    self.artist = artist
-    self.artwork = artwork
-  }
+    self.name = nil
+    self.artist = nil
+    self.artwork = nil
 
-  convenience init(url: URL) {
-    self.init(url: url, name: nil, artist: nil, artwork: nil)
+    DispatchQueue.global(qos: .userInitiated).async {
+      self.setMetadata()
+    }
   }
 
   public func setMetadata() {
@@ -45,6 +45,7 @@ class Song {
         guard let imageData = item.value as? Data else { continue }
 
         artwork = NSImage(data: imageData)
+        artwork?.size = NSSize(width: 36, height: 36)
 
       default:
         continue

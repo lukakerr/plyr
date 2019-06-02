@@ -11,10 +11,8 @@ import AVFoundation
 
 final class Player: NSObject, AVAudioPlayerDelegate, NSUserNotificationCenterDelegate {
 
-  static let shared = Player()
-
   /// All songs
-  public var songs: [Song]!
+  private var songs: [Song]!
 
   /// Main audio player
   private var audioPlayer: AVAudioPlayer!
@@ -30,12 +28,15 @@ final class Player: NSObject, AVAudioPlayerDelegate, NSUserNotificationCenterDel
     return audioPlayer.isPlaying
   }
 
-  private override init() {
+  override init() {
     super.init()
 
-    songs = getAllSongs()
-    currentSongIndex = preferences.currentSongIndex
+    self.currentSongIndex = preferences.currentSongIndex
     NSUserNotificationCenter.default.delegate = self
+  }
+
+  public func initialize() {
+    self.songs = self.getAllSongs()
   }
 
   /// Plays all songs one by one
@@ -117,6 +118,12 @@ final class Player: NSObject, AVAudioPlayerDelegate, NSUserNotificationCenterDel
     }
   }
 
+  public func song(for term: String) -> [Song] {
+    return songs.filter {
+      $0.name?.lowercased().contains(term.lowercased()) ?? false
+    }
+  }
+
   // MARK: - Private methods
 
   // Returns an array of URLs found under ~/Music
@@ -134,5 +141,3 @@ final class Player: NSObject, AVAudioPlayerDelegate, NSUserNotificationCenterDel
   }
 
 }
-
-let player = Player.shared

@@ -10,8 +10,9 @@ import Cocoa
 
 class PlayerViewController: NSViewController {
 
+  private var player = Player()
   private var searching: Bool = false
-  private var searchWindowController = SearchWindowController()
+  private var searchWindowController: OpenQuicklyWindowController!
   
   @IBOutlet weak var backgroundView: NSView!
   @IBOutlet weak var transparentView: NSVisualEffectView!
@@ -39,22 +40,30 @@ class PlayerViewController: NSViewController {
 
       return event
     }
-    
-    player.playAll()
+
+    DispatchQueue.global(qos: .userInitiated).async {
+      self.player.initialize()
+
+      DispatchQueue.main.async {
+        self.player.playAll()
+      }
+    }
   }
-  
+
   override func viewDidLoad() {
+    let openQuicklyOptions = OpenQuicklyOptions()
+    openQuicklyOptions.width = 400
+    openQuicklyOptions.rowHeight = 50
+    openQuicklyOptions.delegate = self
+    openQuicklyOptions.persistPosition = true
+    openQuicklyOptions.placeholder = "Search for a song"
+
+    self.searchWindowController = OpenQuicklyWindowController(options: openQuicklyOptions)
+
     NotificationCenter.default.addObserver(
       self,
       selector: #selector(self.setSongDetails),
       name: NSNotification.Name(rawValue: "setSongDetails"),
-      object: nil
-    )
-
-    NotificationCenter.default.addObserver(
-      self,
-      selector: #selector(self.updateSearching),
-      name: NSNotification.Name(rawValue: "searchWindowToggled"),
       object: nil
     )
   }
@@ -63,7 +72,7 @@ class PlayerViewController: NSViewController {
     let modifierFlags = event.modifierFlags.intersection(.deviceIndependentFlagsMask)
 
     // Command + 'o'
-    if modifierFlags == [.command] && event.keyCode == 31 {
+    if modifierFlags == [.command] && event.keyCode == KeyCode.o {
       searching.toggle()
       searchWindowController.toggle()
       return true
@@ -75,35 +84,29 @@ class PlayerViewController: NSViewController {
     }
 
     switch event.keyCode {
-    case 49: // Spacebar
+    case KeyCode.space:
       onMainControlClick(nil)
       return true
 
-    case 45: // 'n'
+    case KeyCode.n:
       nextButtonClicked(nil)
       return true
 
-    case 35: // 'p'
+    case KeyCode.p:
       previousButtonClicked(nil)
       return true
 
-    case 1: // 's'
+    case KeyCode.s:
       skipButtonClicked(nil)
       return true
 
-    case 15: // 'r'
+    case KeyCode.r:
       rewindButtonClicked(nil)
       return true
 
     default:
       return false
     }
-  }
-
-  @objc func updateSearching(notification: Notification?) {
-    guard let searchWindowVisible = notification?.object as? Bool else { return }
-
-    searching = searchWindowVisible
   }
   
   // Set song details from given audio path
@@ -153,6 +156,73 @@ class PlayerViewController: NSViewController {
   @IBAction func previousButtonClicked(_ sender: Any?) {
     player.previous()
     setButtons()
+  }
+
+}
+
+extension PlayerViewController: OpenQuicklyDelegate {
+
+  func openQuickly(item: Any) -> NSView? {
+    guard
+      let song = item as? Song,
+      let artist = song.artist,
+      let name = song.name
+    else { return nil }
+
+    let view = NSStackView()
+    view.edgeInsets = NSEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
+
+    let title = NSTextField()
+
+    title.isEditable = false
+    title.isBezeled = false
+    title.isSelectable = false
+    title.focusRingType = .none
+    title.drawsBackground = false
+    title.font = NSFont.systemFont(ofSize: 14)
+    title.stringValue = name
+
+    let subtitle = NSTextField()
+
+    subtitle.isEditable = false
+    subtitle.isBezeled = false
+    subtitle.isSelectable = false
+    subtitle.focusRingType = .none
+    subtitle.drawsBackground = false
+    subtitle.stringValue = artist
+    subtitle.font = NSFont.systemFont(ofSize: 12)
+
+    let text = NSStackView()
+    text.orientation = .vertical
+    text.spacing = 2.0
+    text.alignment = .left
+
+    text.addArrangedSubview(title)
+    text.addArrangedSubview(subtitle)
+
+    if let artwork = song.artwork {
+      view.addArrangedSubview(NSImageView(image: artwork))
+    }
+
+    view.addArrangedSubview(text)
+
+    return view
+  }
+
+  func valueWasEntered(_ value: String) -> [Any] {
+    return player.song(for: value)
+  }
+
+  func itemWasSelected(selected item: Any) {
+    searching = false
+
+    guard let song = item as? Song else { return }
+
+    player.play(song)
+  }
+
+  func windowDidClose() {
+    searching = false
   }
 
 }

@@ -7,14 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A12C35C922A3441500DE7886 /* OpenQuicklyDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12C35C322A3441500DE7886 /* OpenQuicklyDelegate.swift */; };
+		A12C35CA22A3441500DE7886 /* OpenQuicklyTableRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12C35C422A3441500DE7886 /* OpenQuicklyTableRowView.swift */; };
+		A12C35CB22A3441500DE7886 /* OpenQuicklyOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12C35C522A3441500DE7886 /* OpenQuicklyOptions.swift */; };
+		A12C35CC22A3441500DE7886 /* OpenQuicklyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12C35C622A3441500DE7886 /* OpenQuicklyViewController.swift */; };
+		A12C35CD22A3441500DE7886 /* OpenQuicklyWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12C35C722A3441500DE7886 /* OpenQuicklyWindowController.swift */; };
+		A12C35CE22A3441500DE7886 /* OpenQuicklyWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12C35C822A3441500DE7886 /* OpenQuicklyWindow.swift */; };
+		A12C35D022A3496F00DE7886 /* KeyCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12C35CF22A3496F00DE7886 /* KeyCode.swift */; };
 		A131454122224FC500E86383 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = A131454022224FC500E86383 /* Song.swift */; };
 		A142AA892222183A0018C7BC /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142AA882222183A0018C7BC /* Preferences.swift */; };
 		A19C347D1F76182E00BA7FC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C347C1F76182E00BA7FC3 /* AppDelegate.swift */; };
 		A19C34841F76182E00BA7FC3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A19C34821F76182E00BA7FC3 /* Main.storyboard */; };
 		A1A133AD1F830FBD0072CB58 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1A133AC1F830FBD0072CB58 /* Assets.xcassets */; };
-		A1B1B9442222200000876969 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1B9432222200000876969 /* SearchViewController.swift */; };
-		A1B1B9462222216200876969 /* SearchWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1B9452222216200876969 /* SearchWindowController.swift */; };
-		A1B1B94822222E0200876969 /* SearchWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1B94722222E0200876969 /* SearchWindow.swift */; };
 		A1B787301F77AA2700F6C5DF /* PlyrWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B7872F1F77AA2700F6C5DF /* PlyrWindowController.swift */; };
 		A1C24559204779D300B519F8 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C24558204779D300B519F8 /* Player.swift */; };
 		A1D6A1BD2046AD9F0071155C /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D6A1BC2046AD9F0071155C /* PlayerViewController.swift */; };
@@ -22,6 +26,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A12C35C322A3441500DE7886 /* OpenQuicklyDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenQuicklyDelegate.swift; sourceTree = "<group>"; };
+		A12C35C422A3441500DE7886 /* OpenQuicklyTableRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenQuicklyTableRowView.swift; sourceTree = "<group>"; };
+		A12C35C522A3441500DE7886 /* OpenQuicklyOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenQuicklyOptions.swift; sourceTree = "<group>"; };
+		A12C35C622A3441500DE7886 /* OpenQuicklyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenQuicklyViewController.swift; sourceTree = "<group>"; };
+		A12C35C722A3441500DE7886 /* OpenQuicklyWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenQuicklyWindowController.swift; sourceTree = "<group>"; };
+		A12C35C822A3441500DE7886 /* OpenQuicklyWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenQuicklyWindow.swift; sourceTree = "<group>"; };
+		A12C35CF22A3496F00DE7886 /* KeyCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyCode.swift; sourceTree = "<group>"; };
 		A131454022224FC500E86383 /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		A142AA882222183A0018C7BC /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		A19C34791F76182E00BA7FC3 /* plyr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = plyr.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -29,9 +40,6 @@
 		A19C34831F76182E00BA7FC3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A19C34851F76182E00BA7FC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A1A133AC1F830FBD0072CB58 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		A1B1B9432222200000876969 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		A1B1B9452222216200876969 /* SearchWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchWindowController.swift; sourceTree = "<group>"; };
-		A1B1B94722222E0200876969 /* SearchWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchWindow.swift; sourceTree = "<group>"; };
 		A1B7872F1F77AA2700F6C5DF /* PlyrWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlyrWindowController.swift; sourceTree = "<group>"; };
 		A1C24558204779D300B519F8 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		A1D6A1BC2046AD9F0071155C /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
@@ -72,14 +80,18 @@
 				A1A133AC1F830FBD0072CB58 /* Assets.xcassets */,
 				A1FFBBC02047A4FB004C16BA /* Extensions.swift */,
 				A19C34851F76182E00BA7FC3 /* Info.plist */,
+				A12C35CF22A3496F00DE7886 /* KeyCode.swift */,
 				A19C34821F76182E00BA7FC3 /* Main.storyboard */,
+				A12C35C322A3441500DE7886 /* OpenQuicklyDelegate.swift */,
+				A12C35C522A3441500DE7886 /* OpenQuicklyOptions.swift */,
+				A12C35C422A3441500DE7886 /* OpenQuicklyTableRowView.swift */,
+				A12C35C622A3441500DE7886 /* OpenQuicklyViewController.swift */,
+				A12C35C822A3441500DE7886 /* OpenQuicklyWindow.swift */,
+				A12C35C722A3441500DE7886 /* OpenQuicklyWindowController.swift */,
 				A1C24558204779D300B519F8 /* Player.swift */,
 				A1D6A1BC2046AD9F0071155C /* PlayerViewController.swift */,
 				A1B7872F1F77AA2700F6C5DF /* PlyrWindowController.swift */,
 				A142AA882222183A0018C7BC /* Preferences.swift */,
-				A1B1B9432222200000876969 /* SearchViewController.swift */,
-				A1B1B94722222E0200876969 /* SearchWindow.swift */,
-				A1B1B9452222216200876969 /* SearchWindowController.swift */,
 				A131454022224FC500E86383 /* Song.swift */,
 			);
 			path = Plyr;
@@ -157,16 +169,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A12C35CE22A3441500DE7886 /* OpenQuicklyWindow.swift in Sources */,
 				A1FFBBC12047A4FB004C16BA /* Extensions.swift in Sources */,
-				A1B1B9462222216200876969 /* SearchWindowController.swift in Sources */,
-				A1B1B9442222200000876969 /* SearchViewController.swift in Sources */,
 				A1C24559204779D300B519F8 /* Player.swift in Sources */,
 				A131454122224FC500E86383 /* Song.swift in Sources */,
+				A12C35D022A3496F00DE7886 /* KeyCode.swift in Sources */,
+				A12C35CC22A3441500DE7886 /* OpenQuicklyViewController.swift in Sources */,
+				A12C35CD22A3441500DE7886 /* OpenQuicklyWindowController.swift in Sources */,
+				A12C35C922A3441500DE7886 /* OpenQuicklyDelegate.swift in Sources */,
 				A142AA892222183A0018C7BC /* Preferences.swift in Sources */,
-				A1B1B94822222E0200876969 /* SearchWindow.swift in Sources */,
 				A1D6A1BD2046AD9F0071155C /* PlayerViewController.swift in Sources */,
 				A1B787301F77AA2700F6C5DF /* PlyrWindowController.swift in Sources */,
+				A12C35CB22A3441500DE7886 /* OpenQuicklyOptions.swift in Sources */,
 				A19C347D1F76182E00BA7FC3 /* AppDelegate.swift in Sources */,
+				A12C35CA22A3441500DE7886 /* OpenQuicklyTableRowView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

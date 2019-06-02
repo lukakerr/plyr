@@ -1,5 +1,14 @@
 # Plyr
 
+
+[![Swift 5](https://img.shields.io/badge/swift-5-orange.svg?style=flat)](https://github.com/apple/swift)
+[![Platform](http://img.shields.io/badge/platform-macOS-red.svg?style=flat)](https://developer.apple.com/macos/)
+[![Github](http://img.shields.io/badge/github-lukakerr-green.svg?style=flat)](https://github.com/lukakerr)
+
+<p align="center">
+  <img src="./Plyr/Assets.xcassets/AppIcon.appiconset/mac_appicon-512@1x.png" width="150">
+</p>
+
 Plyr is a hyperminimal, lightweight macOS music playback desktop application.
 
 Audio files are looked for in the `~/Music` directory. If none are found, the app will notify you and terminate.
@@ -29,6 +38,6 @@ Audio files are looked for in the `~/Music` directory. If none are found, the ap
 
 <p align="center">
   <img src="https://i.imgur.com/BK2Ez7a.png" width="250">
-  <img src="https://i.imgur.com/zUWg3sR.png" width="250">
+  <img src="https://i.imgur.com/spTAg94.png" width="250">
   <img src="https://i.imgur.com/XACDb9A.png" width="250">
 </p>
