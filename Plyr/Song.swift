@@ -26,29 +26,44 @@ class Song {
     DispatchQueue.global(qos: .userInitiated).async {
       self.setMetadata()
     }
+
+    if self.artwork == nil {
+      self.artwork = NSImage(named: "Missing")
+      self.setArtworkSize()
+    }
+  }
+
+  private func setArtworkSize() {
+    artwork?.size = NSSize(width: 36, height: 36)
   }
 
   public func setMetadata() {
     let asset = AVURLAsset(url: url, options: nil)
 
-    for item in asset.commonMetadata {
-      guard let key = item.commonKey else { continue }
+    for format in asset.availableMetadataFormats {
+      if name != nil && artist != nil && artwork != nil {
+        return
+      }
 
-      switch key {
-      case .commonKeyTitle:
-        name = item.value as? String
+      for item in asset.metadata(forFormat: format) {
+        guard let key = item.commonKey else { continue }
 
-      case .commonKeyArtist:
-        artist = item.value as? String
+        switch key {
+        case .commonKeyTitle:
+          name = item.value as? String
 
-      case .commonKeyArtwork:
-        guard let imageData = item.value as? Data else { continue }
+        case .commonKeyArtist:
+          artist = item.value as? String
 
-        artwork = NSImage(data: imageData)
-        artwork?.size = NSSize(width: 36, height: 36)
+        case .commonKeyArtwork:
+          guard let imageData = item.value as? Data else { continue }
 
-      default:
-        continue
+          artwork = NSImage(data: imageData)
+          setArtworkSize()
+
+        default:
+          continue
+        }
       }
     }
   }

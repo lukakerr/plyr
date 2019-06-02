@@ -44,6 +44,7 @@ extension URL {
     case mp3
     case m4a
     case m4p
+    case aiff
   }
 
   internal var isMusicFile: Bool {
