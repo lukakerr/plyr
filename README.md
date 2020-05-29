@@ -31,7 +31,7 @@ Visit the [releases page](https://github.com/lukakerr/plyr/releases) to download
 #### Download via Homebrew Cask
 
 ```bash
-$ brew cask remove pine
+$ brew cask remove plyr
 ```
 
 #### Downloaded Manually
